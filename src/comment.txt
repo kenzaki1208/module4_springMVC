@@ -1,0 +1,69 @@
+Ok 👍 mình tóm tắt ngắn gọn, dễ nhớ về **cách mapping trong nhiều project Spring MVC để không bị trùng** nhé:
+
+---
+
+## 1. Mapping trong **Controller**
+
+* Ở **class**: dùng `@RequestMapping` để đặt **prefix** cho cả project/bài tập.
+
+  ```java
+  @Controller
+  @RequestMapping("/week1/overview/practice/p1/customers")
+  public class CustomerController { ... }
+  ```
+
+  👉 Như vậy toàn bộ method trong class này sẽ bắt đầu bằng `/week1/overview/practice/p1/customers`.
+
+* Ở **method**: chỉ cần viết **đường dẫn chi tiết**.
+
+  ```java
+  @GetMapping("/list")    // → /week1/overview/practice/p1/customers/list
+  @GetMapping("/detail")  // → /week1/overview/practice/p1/customers/detail
+  ```
+
+---
+
+## 2. Mapping trong **JSP**
+
+Trong JSP khi gọi link `<a>` hoặc `<form action>`:
+
+* Luôn viết đầy đủ path = **contextPath + class mapping + method mapping**.
+
+  ```jsp
+  <a href="${pageContext.request.contextPath}/week1/overview/practice/p1/customers/detail?id=${c.id}">
+      ${c.name}
+  </a>
+  ```
+
+👉 **Không bao giờ gọi trực tiếp JSP** theo folder thật. JSP luôn được gọi gián tiếp thông qua Controller mapping.
+
+---
+
+## 3. Nguyên tắc tránh trùng
+
+* Mỗi project/bài tập bạn làm → đặt một **prefix riêng** ở `@RequestMapping` class.
+  Ví dụ:
+
+  * `/week1/...` cho bài tuần 1
+  * `/week2/...` cho bài tuần 2
+  * `/assignment/...` cho bài tập lớn
+
+* Nhờ prefix này, các controller khác nhau có thể có cùng method mapping `/detail`, `/list`… mà không bị trùng, vì class mapping đã phân biệt rồi.
+
+---
+
+✅ Tóm gọn một câu:
+
+* **Class mapping = tên project/bài tập (prefix).**
+* **Method mapping = chức năng chi tiết (list, detail, create, update...).**
+* **JSP link = contextPath + class mapping + method mapping.**
+
+---
+
+Bạn có muốn mình vẽ 1 sơ đồ kiểu:
+
+```
+URL request → DispatcherServlet → Controller (class mapping + method mapping) → ViewResolver → JSP
+```
+
+để bạn cầm đi đâu cũng nhớ luôn không?

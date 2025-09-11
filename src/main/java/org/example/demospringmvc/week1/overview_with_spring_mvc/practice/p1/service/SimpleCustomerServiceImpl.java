@@ -12,11 +12,11 @@ public class SimpleCustomerServiceImpl implements CustomerService {
 
     static {
         customers = new HashMap<>();
-        customers.put(1, new Customer(1, "John", "john@gmail.com", "Ha Noi"));
-        customers.put(2, new Customer(2, "Mary", "mary@gmail.com", "Hai Phong"));
-        customers.put(3, new Customer(3, "Adam", "adam@gmail.com", "Da Nang"));
-        customers.put(4, new Customer(4, "Jane", "jane@gmail.com", "Sai Gon"));
-        customers.put(5, new Customer(5, "Jack", "jack@gmail.com", "Ho Chi Minh"));
+        customers.put(1, new Customer(1, "John F. BuckingHam", "john@gmail.com", "Ha Noi"));
+        customers.put(2, new Customer(2, "Mary J. Lottery", "mary@gmail.com", "Hai Phong"));
+        customers.put(3, new Customer(3, "Adam N. Noop", "adam@gmail.com", "Da Nang"));
+        customers.put(4, new Customer(4, "Jane J. Jackson", "jane@gmail.com", "Sai Gon"));
+        customers.put(5, new Customer(5, "Jack D. Dump", "jack@gmail.com", "Ho Chi Minh"));
     }
 
     @Override
