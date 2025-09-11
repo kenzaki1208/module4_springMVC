@@ -14,6 +14,9 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <mvc:annotation-driven/>
 
+    <!--  week1: overview with spring mvc  -->
+    <bean name="customerService" class="org.example.demospringmvc.week1.overview_with_spring_mvc.practice.p1.service.SimpleCustomerServiceImpl"/>
+
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"/>
         <property name="suffix" value=".jsp"/>
